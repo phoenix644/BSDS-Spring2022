@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BSDS-Lab2:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/BSDS_Lab2_war</output-path>
+    <root id="archive" name="BSDS-Lab2_war.war">
+      <element id="artifact" artifact-name="BSDS-Lab2:war exploded" />
+    </root>
+  </artifact>
+</component>

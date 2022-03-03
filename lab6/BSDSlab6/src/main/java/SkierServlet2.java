@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ import java.util.concurrent.TimeoutException;
 public class SkierServlet2 extends HttpServlet {
 
 
-    //private Gson gson = new Gson();
+    private Gson gson = new Gson();
 
     private ResortController resortController = new ResortController();
 

@@ -23,7 +23,9 @@ public class SendoQueue {
         this.QUEUE_NAME = QUEUE_NAME;
         this.message = message;
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setUsername("phoenix1");
+        factory.setPassword("phoenix1");
+        factory.setHost("cs6650-classiclb-675020420.us-east-1.elb.amazonaws.com");
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);

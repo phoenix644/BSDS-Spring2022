@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: Consumer
+Class-Path: C:\Users\phoenix\IdeaProjects\BSDSlab6\target\classes
+

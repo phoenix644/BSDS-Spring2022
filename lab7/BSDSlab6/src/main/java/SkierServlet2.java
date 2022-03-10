@@ -1,4 +1,6 @@
+import Model.LiftRide;
 import com.google.gson.Gson;
+import com.rabbitmq.client.ConnectionFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
@@ -18,7 +22,7 @@ import java.util.concurrent.TimeoutException;
 @WebServlet(name = "SkierServlet2", value = "/SkierServlet2")
 public class SkierServlet2 extends HttpServlet {
 
-
+    ConnectionFactory factory = new ConnectionFactory();
     private Gson gson = new Gson();
 
     private ResortController resortController = new ResortController();
@@ -129,16 +133,22 @@ public class SkierServlet2 extends HttpServlet {
 //            Gson gson = new Gson();
 //            String skierJsonString = gson.toJson(skier1);
 
-            Parser parse = new Parser();
-            String message = parse.parse(request);
+            // this is for string parser
+//            Parser parse = new Parser();
+//            String message = parse.parse(request);
+//            response.setContentType("application/json");
+//            response.setCharacterEncoding("UTF-8");
+
+            // this is for Gson parser
+            ParserGson parserGson = new ParserGson();
+            String message = parserGson.parse(request,parameters);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
-
-
             SendoQueue sendoQueue = new SendoQueue();
-            sendoQueue.sendMessage("queueTest1",message);
+            sendoQueue.sendMessage("queueTest1",message, factory);
             out.write(message);
+            out.write(String.valueOf(parameters));
 
 
 

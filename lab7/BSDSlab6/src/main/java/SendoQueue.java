@@ -19,11 +19,11 @@ public class SendoQueue {
 
     //public static void main(String[] argv) throws Exception {
 
-    public void sendMessage(String QUEUE_NAME,String message) throws IOException, TimeoutException {
+    public void sendMessage(String QUEUE_NAME, String message, ConnectionFactory factory) throws IOException, TimeoutException {
         this.QUEUE_NAME = QUEUE_NAME;
         this.message = message;
         //take out connection factory
-        ConnectionFactory factory = new ConnectionFactory();
+
         factory.setUsername("phoenix1");
         factory.setPassword("phoenix1");
         factory.setHost("cs6650-classiclb-675020420.us-east-1.elb.amazonaws.com");

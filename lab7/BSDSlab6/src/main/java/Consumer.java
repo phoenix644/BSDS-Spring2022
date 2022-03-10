@@ -1,3 +1,6 @@
+import DAL.LiftRideDao;
+import Model.LiftRide;
+import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -12,10 +15,16 @@ import java.util.concurrent.TimeoutException;
 public class Consumer implements Runnable {
 
     private final static String QUEUE_NAME = "queueTest1";
-    private static java.util.concurrent.ConcurrentHashMap ConcurrentHashMap = new ConcurrentHashMap();
+    //private static java.util.concurrent.ConcurrentHashMap ConcurrentHashMap = new ConcurrentHashMap();
     private static int i=0;
     final static private int NUMTHREADS = 128;
     private  static CountDownLatch completed = new CountDownLatch(NUMTHREADS);
+    String message = null;
+    LiftRideDao liftRideDao = new LiftRideDao();
+    Gson gson = new Gson();
+    LiftRide deserializedRequest = gson.fromJson(message, LiftRide.class);
+
+
 
     public static void main(String[] argv) throws Exception {
 
@@ -52,7 +61,7 @@ public class Consumer implements Runnable {
         final long totalTime = endTime - startTime;
         //Vector th1v = ThreadVector.gett1v();
         System.out.println("Total latency for " + NUMTHREADS + "requests " + "is " + totalTime + " millisecs");
-        System.out.println("hashmap " + ConcurrentHashMap);
+        //System.out.println("hashmap " + ConcurrentHashMap);
 
     }
 
@@ -78,8 +87,11 @@ public class Consumer implements Runnable {
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            ConcurrentHashMap.put(i++,message );
+             message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            //ConcurrentHashMap.put(i++,message );
+            // Send to the DB.
+            LiftRide deserializedRequest = gson.fromJson(message, LiftRide.class);
+            liftRideDao.createLiftRide(deserializedRequest);
 
             System.out.println(" [x] Received '" + message + "'");
         };

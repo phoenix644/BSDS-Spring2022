@@ -24,18 +24,18 @@ public class ResortController {
 
         }
 
-        else if (object.equalsIgnoreCase("LiftRide")){
-            LiftRide LiftRide = new LiftRide();
-            Gson gson = new Gson();
-            skierJsonString = gson.toJson(LiftRide);
-        }
+//        else if (object.equalsIgnoreCase("LiftRide")){
+//            LiftRide LiftRide = new LiftRide();
+//            Gson gson = new Gson();
+//            skierJsonString = gson.toJson(LiftRide);
+//        }
 
         return skierJsonString;
 
     }
 
 
-    public void sendto(map<> , string)
+    //public void sendto(map<> , string)
 
 
 }

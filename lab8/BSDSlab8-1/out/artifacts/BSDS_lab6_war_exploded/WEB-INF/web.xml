@@ -17,6 +17,11 @@
         <url-pattern>/skiers/*</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>ResortsServlet</servlet-name>
+        <url-pattern>/resorts/*</url-pattern>
+    </servlet-mapping>
+
 <!--    <servlet>-->
 <!--        <servlet-name>ResortsServlet</servlet-name>-->
 <!--        <servlet-class>lab4.server.ResortsServlet</servlet-class>-->

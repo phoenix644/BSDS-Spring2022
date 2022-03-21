@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "ResortsServlet", value = "/ResortsServlet")
-public class ResortServlet extends HttpServlet {
+public class ResortsServlet extends HttpServlet {
 
     ConnectionFactory factory = new ConnectionFactory();
     private Gson gson = new Gson();

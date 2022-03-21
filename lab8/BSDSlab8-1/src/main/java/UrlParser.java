@@ -10,12 +10,15 @@ public final class UrlParser {
         Map<String, String> pathMap = new HashMap<>();
         UrlValidator urlValidator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
 
+        System.out.println(urlParts.length);
+
+
         // System.out.println(Arrays.toString(urlParts));
         // System.out.println(urlParts.length);
 
         // Skier Servelet Validation
         // Only accept urlParts = [, {resortID}, seasons, {seasonID}, days, {dayID}, skiers, {skierID}]
-        if (urlParts.length != 8 || !urlValidator.isValid(reqUrl)) {
+        if (!urlValidator.isValid(reqUrl)) {
             //throw new IllegalArgumentException("Invalid URL");
             pathMap.put("Invalid URL", "Invalid URL");
             return pathMap;
@@ -48,10 +51,7 @@ public final class UrlParser {
                         continue;
                 }
             }
-            // last check if all info are parsed into hashmap
-        if (pathMap.size() != 4) {
-            throw new IllegalArgumentException("Passed URL expects 4 fields...");
-            }
+
 
         }
         
@@ -88,6 +88,11 @@ public final class UrlParser {
             pathMap.put("resortID", resortID);
             System.out.println(pathMap.toString());
         }
+        // last check if all info are parsed into hashmap
+//        if (pathMap.size() != 4) {
+//            throw new IllegalArgumentException("Passed URL expects exact amount fields...");
+//        }
+
         return pathMap;
     }
 

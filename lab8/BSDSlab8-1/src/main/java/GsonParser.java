@@ -40,9 +40,9 @@ public class GsonParser {
 
         LiftRide lr = new LiftRide();
 
-        lr.setSkierID((Integer) parameters.get("skierID"));
+        lr.setSkierID(Integer.parseInt((String) parameters.get("skierID")));
         lr.setSeasonID((String) parameters.get("seasonID"));
-        lr.setResortID((Integer) parameters.get("resortID"));
+        lr.setResortID(Integer.parseInt((String) parameters.get("resortID")));
         lr.setDayID((String) parameters.get("dayID"));
 
 //        lr.setDayID(Integer.parseInt(parameters.get("dayID")));
@@ -64,7 +64,7 @@ public class GsonParser {
 
         Resorts resorts = new Resorts();
 
-        resorts.setResortID((Integer) parameters.get("resortID"));
+        resorts.setResortID(Integer.parseInt((String) parameters.get("resortID")));;
 
         resorts.setYear(pResorts.year);
         //String jsonmessage = rabbitmqJson.write(lr);

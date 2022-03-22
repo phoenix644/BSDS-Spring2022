@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException;
 @WebServlet(name = "SkierServlet2", value = "/SkierServlet2")
 public class SkierServlet2 extends HttpServlet {
 
-    ConnectionFactory factory = new ConnectionFactory();
+//    ConnectionFactory factory = new ConnectionFactory();
     private Gson gson = new Gson();
     String postMessage;
     GsonParser gsonParser = new GsonParser();
@@ -98,16 +98,16 @@ public class SkierServlet2 extends HttpServlet {
             // UrlParser do the duty of checking the url validity and returning the
             // corresponding message to client if it was a wrong url
             parameters = UrlParser.parseUrl(urlParts, reqUrl);
-            // return 200 success message
-            response.setStatus(HttpServletResponse.SC_OK);
+            // return 201 success message
+            response.setStatus(HttpServletResponse.SC_CREATED);
 
 
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
-            SendoQueue sendoQueue = new SendoQueue();
+            SendoQueue sendoQueue = new SendoQueue("Skier");
             postMessage = gsonParser.submitLiftRide(request, parameters);
-            sendoQueue.sendMessage("Skier",postMessage, factory);
+            sendoQueue.sendMessage("Skier",postMessage);
             out.write(postMessage);
             out.write(String.valueOf(parameters));
 

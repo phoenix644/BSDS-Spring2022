@@ -13,10 +13,10 @@ import java.util.concurrent.TimeoutException;
 
 public class ConsumerSkier implements Runnable {
 
-    private final static String QUEUE_NAME = "queueTest1";
+    private final static String QUEUE_NAME = "Skier";
     //private static java.util.concurrent.ConcurrentHashMap ConcurrentHashMap = new ConcurrentHashMap();
     private static int i=0;
-    final static private int NUMTHREADS = 128;
+    final static private int NUMTHREADS = 64;
     private  static CountDownLatch completed = new CountDownLatch(NUMTHREADS);
     String message = null;
     LiftRideDao liftRideDao = new LiftRideDao();

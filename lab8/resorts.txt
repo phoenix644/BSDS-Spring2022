@@ -1,0 +1,7 @@
+
+create table Resorts (
+
+   ID int AUTO_INCREMENT primary key,
+   ResortsID int,
+   seasonID varchar(30)   
+    );

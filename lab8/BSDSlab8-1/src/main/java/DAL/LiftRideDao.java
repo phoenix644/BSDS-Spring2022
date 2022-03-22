@@ -9,7 +9,7 @@ public class LiftRideDao {
     private static BasicDataSource dataSource;
 
     public LiftRideDao() {
-        dataSource = DBCPDataSource.getDataSource();
+        dataSource = DBCPDataSource.getDataSource("skier");
     }
 
     public void createLiftRide(LiftRide newLiftRide) {

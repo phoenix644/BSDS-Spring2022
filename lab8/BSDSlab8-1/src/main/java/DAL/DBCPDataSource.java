@@ -12,11 +12,22 @@ public class DBCPDataSource {
 //    private static final String USERNAME = System.getProperty("DB_USERNAME");
 //    private static final String PASSWORD = System.getProperty("DB_PASSWORD");
 
-    private static final String HOST_NAME = "127.0.0.1";
+
+    //private static final String HOST_NAME = "skiresortinstance2.cxkhvqcs2jrh.us-east-1.rds.amazonaws.com";
+
+    private static final String HOST_NAME = "database-jameson6650.cljzcb3o3jta.us-east-1.rds.amazonaws.com";
+
     private static final int PORT = 3306;
-    private static final String DATABASE = "skiresort";
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "Xx123456";
+    private static String DATABASE;
+    private static final String USERNAME = "albersJ";
+    private static final String PASSWORD = "LxO6M6zv027xaQO06oQq";
+
+
+//    private static final String HOST_NAME = "127.0.0.1";
+//    private static final int PORT = 3306;
+//    private static String DATABASE;
+//    private static final String USERNAME = "admin";
+//    private static final String PASSWORD = "Xx123456";
 
     static {
         // https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html
@@ -34,7 +45,12 @@ public class DBCPDataSource {
         dataSource.setMaxTotal(60);
     }
 
-    public static BasicDataSource getDataSource() {
+    public static BasicDataSource getDataSource(String databaseName) {
+        DATABASE = databaseName;
+
+        String url = String.format("jdbc:mysql://%s:%s/%s?serverTimezone=UTC", HOST_NAME, PORT, DATABASE);
+        dataSource.setUrl(url);
+
         return dataSource;
     }
 }

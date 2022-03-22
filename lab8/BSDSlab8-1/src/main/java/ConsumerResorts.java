@@ -18,7 +18,7 @@ public class ConsumerResorts implements Runnable {
     private final static String QUEUE_NAME = "Resorts";
     //private static java.util.concurrent.ConcurrentHashMap ConcurrentHashMap = new ConcurrentHashMap();
     private static int i=0;
-    final static private int NUMTHREADS = 128;
+    final static private int NUMTHREADS = 64;
     private  static CountDownLatch completed = new CountDownLatch(NUMTHREADS);
     String message = null;
     ResortsDao resortsDao = new ResortsDao();
@@ -32,7 +32,7 @@ public class ConsumerResorts implements Runnable {
         final long startTime = System.currentTimeMillis();
 
         //create threads
-        Runnable threadJob = new ConsumerSkier();
+        Runnable threadJob = new ConsumerResorts();
         Thread t[] = new Thread[NUMTHREADS];
 
         for (int i = 0; i < NUMTHREADS ; i++) {

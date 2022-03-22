@@ -3,7 +3,7 @@ package Model;
 public class Resorts {
 
 
-    public Resorts(Integer resortID, String seasonID, String year) {
+    public Resorts(Integer resortID, String year) {
         this.resortID = resortID;
         //this.seasonID = seasonID;
         this.year = year;

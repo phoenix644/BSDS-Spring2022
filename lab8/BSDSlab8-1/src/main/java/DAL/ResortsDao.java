@@ -10,14 +10,14 @@ public class ResortsDao {
     private static BasicDataSource dataSource;
 
     public ResortsDao() {
-        dataSource = DBCPDataSource.getDataSource();
+        dataSource = DBCPDataSource.getDataSource("resorts");
     }
 
     public void createResorts(Resorts newResorts) {
         Connection conn = null;
         PreparedStatement preparedStatement = null;
-        String insertQueryStatement = "INSERT INTO Resorts (resortId, seasonId) " +
-                "VALUES (?,?,?,?,?,?)";
+        String insertQueryStatement = "INSERT INTO Resorts (resortsId, seasonId) " +
+                "VALUES (?,?)";
         try {
             conn = dataSource.getConnection();
             preparedStatement = conn.prepareStatement(insertQueryStatement);

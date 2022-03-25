@@ -30,7 +30,7 @@ public class SendoQueue {
         factory.setUsername("phoenix1");
         factory.setPassword("phoenix1");
         //loadbalancer
-       factory.setHost("cs6650-classiclb-675020420.us-east-1.elb.amazonaws.com");
+        factory.setHost("cs6650-classiclb-675020420.us-east-1.elb.amazonaws.com");
         //factory.setHost("ec2-34-201-77-183.compute-1.amazonaws.com");
 
 
